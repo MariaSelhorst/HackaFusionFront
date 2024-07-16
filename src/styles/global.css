@@ -1,0 +1,10 @@
+body {
+    background-color: #F1F1F1;
+}
+
+.gradient_background {
+    background: linear-gradient(90deg, #ff0000, #870EFF,#017CFF, #49CA56);
+    height: 100vh;
+    width: 100vw;
+
+}
