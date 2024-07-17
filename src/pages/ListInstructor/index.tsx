@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Grid, Box, TextField, Stack, Button, Typography, Modal, IconButton, List, ListItem, ListItemText } from "@mui/material";
-import { Add as AddIcon, DeleteOutlineRoundedIcon } from '@mui/icons-material';
+import { Grid, Box, TextField, Stack, Button, Typography, Modal, IconButton } from "@mui/material";
+import { Add as AddIcon } from '@mui/icons-material';
 import Sidebar from "../../components/Sidebar";
 import { InstructorContainer, InstructorTextTitle } from "./styles";
 
-const modalStyle = {
+const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
@@ -24,9 +24,9 @@ function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={modalStyle}>
+            <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
-                    Cadastrar Aluno
+                    Cadastrar Instrutor
                 </Typography>
                 <Box
                     component="form"
@@ -39,7 +39,7 @@ function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField id="outlined-basic" label="Nome do Aluno" variant="outlined" />
+                    <TextField id="outlined-basic" label="Nome do instrutor" variant="outlined" />
                     <TextField id="outlined-basic" label="E-mail" variant="outlined" />
                     <Stack spacing={2} direction="row" sx={{ justifyContent: 'center', marginTop: 3 }}>
                         <Button variant="contained" color="error" onClick={handleClose}>
@@ -52,14 +52,14 @@ function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose
     );
 }
 
-export default function ListStudents() {
+export default function CreateInstructor() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <>
-            <Sidebar name="Alunos">
+            <Sidebar name="Instrutores">
                 <Grid container justifyContent="center">
                     <InstructorContainer>
                         <IconButton color="primary" onClick={handleOpen}>
@@ -67,30 +67,6 @@ export default function ListStudents() {
                         </IconButton>
                     </InstructorContainer>
                 </Grid>
-                <List sx={{ width: '100%', maxWidth: 700, bgcolor: '#f8f8f8', mt: 2 }}>
-                    {[1, 2, 3].map((value) => (
-                        <ListItem
-                            key={value}
-                            disableGutters
-                            secondaryAction={
-                                <IconButton>
-                                    <DeleteOutlineRoundedIcon />
-                                </IconButton>
-                            }
-                        >
-                            <Grid container alignItems="center" spacing={2}>
-                                <Grid item xs={6}>
-                                    <ListItemText primary={`Aluno ${value}`} />
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Typography variant="body2" color="textSecondary">
-                                        Desenvolvimento de Sistemas
-                                    </Typography>
-                                </Grid>
-                            </Grid>
-                        </ListItem>
-                    ))}
-                </List>
             </Sidebar>
             <InstructorFormModal open={open} handleClose={handleClose} />
         </>
