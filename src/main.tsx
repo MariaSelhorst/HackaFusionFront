@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Home from './pages/ClassManagement'
 import ClassCalendar from './pages/ClassCalendar'
 import ListClasses from './pages/ListClasses'
+import ListStudents from './pages/ListStudents'
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/class/list",
     element: <ListClasses/>
+  },
+  {
+    path: "/students/list",
+    element: <ListStudents/>
   }
 ])
 
