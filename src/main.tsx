@@ -5,6 +5,7 @@ import "./styles/global.css"
 import Login from './pages/Login'
 import Home from './pages/ClassManagement'
 import ClassCalendar from './pages/ClassCalendar'
+import ListClasses from './pages/ListClasses'
 import ListStudents from './pages/ListStudents'
 import ListInstructor from './pages/ListInstructor'
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/class/calendar",
     element: <ClassCalendar/>
+  },
+  {
+    path: "/class/list",
+    element: <ListClasses/>
   },
   {
     path: "/students/list",
