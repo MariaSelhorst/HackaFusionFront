@@ -7,6 +7,8 @@ import Home from './pages/ClassManagement'
 import ClassCalendar from './pages/ClassCalendar'
 import ListClasses from './pages/ListClasses'
 import ListStudents from './pages/ListStudents'
+import ListInstructor from './pages/ListInstructor'
+import CreateClass from './pages/CreateClass'
 
 
 const router = createBrowserRouter([
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/students/list",
     element: <ListStudents/>
+  },
+  {
+    path: "/instructor/list",
+    element: <ListInstructor/>
+  },
+  {
+    path: "/class/create",
+    element: <CreateClass/>
   }
 ])
 
