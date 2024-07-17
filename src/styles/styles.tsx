@@ -7,3 +7,4 @@ export const Header = styled(Box)`
     background-repeat: no-repeat;
     background-size: cover;
 `;
+
