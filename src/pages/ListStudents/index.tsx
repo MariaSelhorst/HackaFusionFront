@@ -19,6 +19,16 @@ const modalStyle = {
 
 const data:TableInfo[]  = [
     {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
+    {data1: "Andrey", data2: "ETS"},
 ]
 
 function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose: () => void }) {
@@ -72,7 +82,9 @@ export default function ListStudents() {
                         </IconButton>
                     </InstructorContainer>
                 </Grid>
-                <InfoList firstColumn='Nome' secondColumn='Turma' data={data}/>
+                <Stack alignItems={"center"} marginTop={5}>
+                    <InfoList firstColumn='Nome' secondColumn='Turma' data={data}/>
+                </Stack>
             </Sidebar>
             <InstructorFormModal open={open} handleClose={handleClose} />
         </>
