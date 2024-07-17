@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Grid, Box, TextField, Stack, Button, Typography, Modal, IconButton, List, ListItem, ListItemText } from "@mui/material";
-import { Add as AddIcon, DeleteOutlineRoundedIcon } from '@mui/icons-material';
+import { Add as AddIcon } from '@mui/icons-material';
 import Sidebar from "../../components/Sidebar";
 import { InstructorContainer, InstructorTextTitle } from "./styles";
+import InfoList, { TableInfo } from '../../components/InfoList';
 
 const modalStyle = {
     position: 'absolute' as 'absolute',
@@ -15,6 +16,10 @@ const modalStyle = {
     boxShadow: 24,
     p: 4,
 };
+
+const data:TableInfo[]  = [
+    {data1: "Andrey", data2: "ETS"},
+]
 
 function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose: () => void }) {
     return (
@@ -67,30 +72,7 @@ export default function ListStudents() {
                         </IconButton>
                     </InstructorContainer>
                 </Grid>
-                <List sx={{ width: '100%', maxWidth: 700, bgcolor: '#f8f8f8', mt: 2 }}>
-                    {[1, 2, 3].map((value) => (
-                        <ListItem
-                            key={value}
-                            disableGutters
-                            secondaryAction={
-                                <IconButton>
-                                    <DeleteOutlineRoundedIcon />
-                                </IconButton>
-                            }
-                        >
-                            <Grid container alignItems="center" spacing={2}>
-                                <Grid item xs={6}>
-                                    <ListItemText primary={`Aluno ${value}`} />
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Typography variant="body2" color="textSecondary">
-                                        Desenvolvimento de Sistemas
-                                    </Typography>
-                                </Grid>
-                            </Grid>
-                        </ListItem>
-                    ))}
-                </List>
+                <InfoList firstColumn='Nome' secondColumn='Turma' data={data}/>
             </Sidebar>
             <InstructorFormModal open={open} handleClose={handleClose} />
         </>
