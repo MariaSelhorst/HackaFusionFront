@@ -8,6 +8,7 @@ import ClassManagement from "../pages/instructor/ClassManagement"
 import CreateClass from "../pages/admin/CreateClass"
 import { Typography } from "@mui/material"
 import AdminHome from "../pages/admin/AdminHome"
+import ListInstructor from "../pages/admin/ListInstructor"
 
 
 const mainRoutes = createBrowserRouter([
@@ -53,8 +54,9 @@ const mainRoutes = createBrowserRouter([
     },
     {
         path: "/admin/instructors",
-        element: <CreateClass/>
+        element: <ListInstructor/>
     },
+
 ])
 
 export default mainRoutes

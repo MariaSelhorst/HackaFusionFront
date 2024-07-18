@@ -97,7 +97,7 @@ export default function Sidebar({ children, name }: any) {
                             >
                                 <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>school</span>
                             </ListItemIcon>
-                            <ListItemText primary="School" sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary="Turma" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
                     
@@ -121,7 +121,7 @@ export default function Sidebar({ children, name }: any) {
                                 <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>manage_accounts
                                 </span>
                             </ListItemIcon>
-                            <ListItemText primary="Account" sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary="Conta" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding sx={{ display: 'block' }}>
@@ -142,7 +142,7 @@ export default function Sidebar({ children, name }: any) {
                             >
                                 <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>calendar_today</span>
                             </ListItemIcon>
-                            <ListItemText primary="Calendar" sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary="Calendário" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
 
