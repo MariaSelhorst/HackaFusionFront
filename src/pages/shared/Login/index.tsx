@@ -74,18 +74,25 @@ export default function Login() {
                 id="password"
                 autoComplete="current-password"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                color='secondary'
+                sx={{ mt: 3, mb: 1 }}
+              >
+                Registrar-se
+              </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color='primary'
+                sx={{ mt: 2, mb: 2 }}
               >
                 Entrar
               </Button>
+              
             </Box>
           </Box>
         </Grid>

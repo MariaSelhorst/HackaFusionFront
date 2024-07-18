@@ -4,7 +4,7 @@ import CardLink from "../../../components/CardLink";
 
 export default function AdminHome () {
     return(
-        <Sidebar>
+        <Sidebar name="Home">
             <Stack alignItems="center" justifyContent="center">
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
