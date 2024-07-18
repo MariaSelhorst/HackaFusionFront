@@ -9,9 +9,7 @@ import CreateClass from "../pages/admin/CreateClass"
 import { Typography } from "@mui/material"
 import AdminHome from "../pages/admin/AdminHome"
 import ListInstructor from "../pages/admin/ListInstructor"
-import ListCourses from "../pages/admin/ListCourses"
-import CreateCourse from "../pages/admin/CreateCourse"
-
+import StudentDetail from "../pages/instructor/StudentDetail"
 
 
 const mainRoutes = createBrowserRouter([
@@ -60,13 +58,9 @@ const mainRoutes = createBrowserRouter([
         element: <ListInstructor/>
     },
     {
-        path: "/admin/courses",
-        element: <ListCourses/>
-    },
-    {
-        path: "/admin/create-course",
-        element: <CreateCourse/>
-    },
+        path: "/instructor/student-detail",
+        element: <StudentDetail/>
+    }
 
 ])
 
