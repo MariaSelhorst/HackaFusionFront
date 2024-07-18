@@ -14,11 +14,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import AddIcon from '@mui/icons-material/Add';
 import { AppBar, Drawer, DrawerHeader } from './styles';
-import { Fab, Stack } from '@mui/material';
 
 export default function Sidebar({ children, name }: any) {
     const theme = useTheme();
