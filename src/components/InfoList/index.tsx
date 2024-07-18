@@ -1,4 +1,4 @@
-import { Box, Button, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 
 export class TableInfo {
     data1: string;
@@ -14,14 +14,14 @@ type InfoListPropTypes = {
     firstColumn: string,
     secondColumn?: string,
     data: TableInfo[],
-    width: string
+    width?: string
 }
 
 export default function InfoList({firstColumn, secondColumn, data, width}:InfoListPropTypes) {
     data = data ? data : [];
     return (
         <>
-            <TableContainer sx={{width: width}} component={Paper}>
+            <TableContainer sx={{width: width ? width : "80%"}} component={Paper}>
                 <Table aria-label="data table">
                     <TableHead>
                         <TableCell align="center">

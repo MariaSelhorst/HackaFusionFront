@@ -1,6 +1,5 @@
-import { Grid, Typography } from "@mui/material"
-import { Header } from "../../styles/styles"
-import Sidebar from "../../components/Sidebar"
+import { Grid } from "@mui/material"
+import Sidebar from "../../../components/Sidebar"
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { StudentButton, StudentButtonGroup, StudentButtonIconContainer, StudentButtonText } from "./styles"

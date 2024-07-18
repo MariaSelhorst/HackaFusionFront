@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Grid, Box, TextField, Stack, Button, Typography, Modal, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { Grid, Box, TextField, Stack, Button, Typography, Modal, IconButton } from "@mui/material";
 import { Add as AddIcon } from '@mui/icons-material';
-import Sidebar from "../../components/Sidebar";
-import { InstructorContainer, InstructorTextTitle } from "./styles";
-import InfoList, { TableInfo } from '../../components/InfoList';
+import Sidebar from "../../../components/Sidebar";
+import { InstructorContainer } from "./styles";
 
-const modalStyle = {
+const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
@@ -17,10 +16,6 @@ const modalStyle = {
     p: 4,
 };
 
-const data:TableInfo[]  = [
-    {data1: "Andrey", data2: "ETS"},
-]
-
 function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose: () => void }) {
     return (
         <Modal
@@ -29,9 +24,9 @@ function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={modalStyle}>
+            <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
-                    Cadastrar Aluno
+                    Cadastrar Instrutor
                 </Typography>
                 <Box
                     component="form"
@@ -44,7 +39,7 @@ function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField id="outlined-basic" label="Nome do Aluno" variant="outlined" />
+                    <TextField id="outlined-basic" label="Nome do instrutor" variant="outlined" />
                     <TextField id="outlined-basic" label="E-mail" variant="outlined" />
                     <Stack spacing={2} direction="row" sx={{ justifyContent: 'center', marginTop: 3 }}>
                         <Button variant="contained" color="error" onClick={handleClose}>
@@ -57,14 +52,14 @@ function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose
     );
 }
 
-export default function ListStudents() {
+export default function ListInstructor() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <>
-            <Sidebar name="Alunos">
+            <Sidebar name="Instrutores">
                 <Grid container justifyContent="center">
                     <InstructorContainer>
                         <IconButton color="primary" onClick={handleOpen}>
@@ -72,7 +67,6 @@ export default function ListStudents() {
                         </IconButton>
                     </InstructorContainer>
                 </Grid>
-                <InfoList firstColumn='Nome' secondColumn='Turma' data={data}/>
             </Sidebar>
             <InstructorFormModal open={open} handleClose={handleClose} />
         </>

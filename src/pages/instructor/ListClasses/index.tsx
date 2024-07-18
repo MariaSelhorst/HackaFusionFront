@@ -1,6 +1,6 @@
-import { Box, Divider, FormControl, InputLabel, Select, Stack, Typography } from "@mui/material";
-import Sidebar from "../../components/Sidebar";
-import InfoList, { TableInfo } from "../../components/InfoList";
+import { Box, FormControl, InputLabel, Select, Stack, Typography } from "@mui/material";
+import Sidebar from "../../../components/Sidebar";
+import InfoList, { TableInfo } from "../../../components/InfoList";
 
 const data:TableInfo[]  = [
     {data1: "TDS1", data2: "2000"},
