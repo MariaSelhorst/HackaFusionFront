@@ -9,6 +9,7 @@ import CreateClass from "../pages/admin/CreateClass"
 import { Typography } from "@mui/material"
 import AdminHome from "../pages/admin/AdminHome"
 import ListInstructor from "../pages/admin/ListInstructor"
+import StudentDetail from "../pages/instructor/StudentDetail"
 
 
 const mainRoutes = createBrowserRouter([
@@ -56,6 +57,10 @@ const mainRoutes = createBrowserRouter([
         path: "/admin/instructors",
         element: <ListInstructor/>
     },
+    {
+        path: "/instructor/student-detail",
+        element: <StudentDetail/>
+    }
 
 ])
 
