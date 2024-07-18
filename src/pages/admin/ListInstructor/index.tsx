@@ -23,7 +23,7 @@ export default function ListInstructor() {
                     {/* <DataGrid
 
                     >
-
+0
                     </DataGrid> */}
 
                 </Stack>
