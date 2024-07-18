@@ -5,10 +5,3 @@ export const InstructorContainer = styled("div")`
     border-radius: 20px;
 `;
 
-export const InstructorTextTitle = styled("p")`
-    font-weight: bolder;
-    display: flex;
-    margin: 15px;
-    font-size: 1.5rem;
-`;
-
