@@ -2,41 +2,30 @@ import Sidebar from "../../../components/Sidebar";
 import { Button, FormControl, Grid, InputLabel, List, ListItem, ListItemText, MenuItem, Select, Stack, Typography, Box, TextField, IconButton } from "@mui/material";
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-interface IDisciplineCreation {
-    name: string;
-    description: string;
-    workload: number;
-    type: string;
-}
 
 interface ICompetenceCreation {
     name: string;
     description: string;
-    weigth: number;
+    weight: number;
 }
 
-export default function CreateCourse() {
+
+export default function CreateDiscipline() {
+
+    const disciplineForm = useForm()
+    const competenceForm = useForm()
     
-    const [filter, setFilter] = useState("");
-    const [competency, setCompetency] = useState("");
-    const [description, setDescription] = useState("");
-    const [weight, setWeight] = useState("");
-    const [items, setItems] = useState([]);
+    const [competences, setCompetences] = useState<ICompetenceCreation[]>([])
+    const [disciplineType, setDisciplineType] = useState("TI")
 
     const handleAddItem = () => {
-        if (competency.trim() !== "" && description.trim() !== "" && weight.trim() !== "") {
-            const newItem = { competency, description, weight };
-            setItems([...items, newItem]);
-            setCompetency("");
-            setDescription("");
-            setWeight("");
-        }
-    };
-
-    const handleRemoveItem = (index) => {
-        setItems(items.filter((_, i) => i !== index));
-    };
+        setCompetences((prev) => [...prev, competenceForm.getValues() as ICompetenceCreation])
+    }
+    const handleRemoveItem = (index: number) => {
+        setCompetences(prev => prev.filter((_, i) => index != i))
+    }
 
     return (
         <>
@@ -50,6 +39,7 @@ export default function CreateCourse() {
                             label="Nome da disciplina"
                             fullWidth
                             sx={{mb: 2}}
+                            { ...disciplineForm.register("name") }
                         />
                         <TextField
                             color="secondary"
@@ -57,6 +47,7 @@ export default function CreateCourse() {
                             label="Descrição"
                             fullWidth
                             sx={{mb: 2}}
+                            { ...disciplineForm.register("description") }
                         />
                         <TextField
                             color="secondary"
@@ -64,13 +55,14 @@ export default function CreateCourse() {
                             label="Carga Horária"
                             fullWidth
                             sx={{mb: 2}}
+                            { ...disciplineForm.register("workload") }
                         />
                         <FormControl fullWidth>
                             <InputLabel id="type-select-label" sx={{ backgroundColor: "white" }}>Tipo</InputLabel>
                             <Select 
                                 labelId="type-select-label"
-                                value={filter}
-                                onChange={(e) => { setFilter(e.target.value as string) }}
+                                value={disciplineType}
+                                onChange={(e) => { setDisciplineType(e.target.value as string) }}
                             >
                                 <MenuItem value="TI">T.I.</MenuItem>
                                 <MenuItem value="MECHATRONIC">Mecatrônica</MenuItem>
@@ -86,8 +78,7 @@ export default function CreateCourse() {
                                 id="competency-field"
                                 label="Competência"
                                 fullWidth
-                                value={competency}
-                                onChange={(e) => setCompetency(e.target.value)}
+                                { ...competenceForm.register("name") }
                             />
                         </Grid>
                         <Grid item xs={5}>
@@ -96,8 +87,7 @@ export default function CreateCourse() {
                                 id="description-field"
                                 label="Descrição"
                                 fullWidth
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
+                                { ...competenceForm.register("description") }
                             />
                         </Grid>
                         <Grid item xs={2}>
@@ -106,8 +96,7 @@ export default function CreateCourse() {
                                 id="weight-field"
                                 label="Peso"
                                 fullWidth
-                                value={weight}
-                                onChange={(e) => setWeight(e.target.value)}
+                                { ...competenceForm.register("weight") }
                             />
                         </Grid>
                         <Grid item xs={2}>
@@ -119,7 +108,7 @@ export default function CreateCourse() {
 
                     <Box>
                         <List>
-                            {items.map((item, index) => (
+                            {competences.map((item, index) => (
                                 <ListItem
                                     key={index}
                                     secondaryAction={
@@ -128,7 +117,7 @@ export default function CreateCourse() {
                                         </IconButton>
                                     }
                                 >
-                                    <ListItemText primary={`Competência: ${item.competency}, Descrição: ${item.description}, Peso: ${item.weight}`} />
+                                    <ListItemText primary={`Competência: ${item.name}, Descrição: ${item.description}, Peso: ${item.weight}`} />
                                 </ListItem>
                             ))}
                         </List>
