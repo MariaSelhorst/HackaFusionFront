@@ -16,7 +16,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { AppBar, Drawer, DrawerHeader } from './styles';
 
-export default function Sidebar({ children, name }: any) {
+type SideparPropTypes = {
+    children: any,
+    name: string
+}
+
+export default function Sidebar({ children, name }: SideparPropTypes) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
