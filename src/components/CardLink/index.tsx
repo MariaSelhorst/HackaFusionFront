@@ -19,13 +19,17 @@ export default function CardLink({ link, title, icon }:ICardLinkProps) {
                 sx={{ 
                     backgroundColor: getRandomColor(), 
                     padding: 3,
-                    borderRadius: 2
+                    borderRadius: 2,
+                    display: 'flex',
+                    gap: 2,
+                    alignItems: 'center'
                 }}
             >
                 { icon }
                 <Typography
                     variant="h5"
                     textAlign="center"
+                    color={"white"}
                 >{title}</Typography>
             </Box>
         </Link>
