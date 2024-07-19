@@ -13,11 +13,11 @@ export default function ListInstructor() {
 
     return (
         <>
-            <Sidebar name="Instrutores">
+            <Sidebar pageName="Instrutores">
                 <Stack>
                     <Stack flexDirection="row" gap={2}>
                         <Typography variant='h4'>Instrutores</Typography>
-                        <IconButton color="primary" onClick={handleOpen}><AddIcon/></IconButton>
+                        <IconButton color="primary" onClick={handleOpen}><AddIcon fontSize="large"/></IconButton>
                     </Stack>
 
                     {/* <DataGrid

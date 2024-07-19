@@ -10,10 +10,9 @@ import TextField from '@mui/material/TextField';
 export default function CreateClass() {
     return (
         <>
-            <Sidebar name="Adicionar Turma">
+            <Sidebar pageName="Adicionar Turma">
                 <Stack maxWidth={"75%"} flexDirection={"column"} borderRadius={"20px"} bgcolor={"#ffffff"} gap={"20px"} sx={{ padding: "30px"}}>
                     <Box width={350}>
-                        {/* AQUI BOY */}
                         <Typography variant="h4" marginBottom={"15px"}>Cadastro de turmas</Typography>
                         <TextField
                             color="secondary"
