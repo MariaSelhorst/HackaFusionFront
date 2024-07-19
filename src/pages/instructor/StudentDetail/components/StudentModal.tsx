@@ -1,4 +1,4 @@
-import { Style } from "@mui/icons-material"
+import { Margin, Style } from "@mui/icons-material"
 import { Box, Button, FormControl, InputLabel, MenuItem, Modal, Select } from "@mui/material"
 
 interface IStudentModalProps {
@@ -13,7 +13,7 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '2px solid #c352e8',
     boxShadow: 24,
     p: 4,
 };
@@ -27,7 +27,7 @@ export default function StudentModal({ open, handleClose }:IStudentModalProps){
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <FormControl fullWidth>
+                <FormControl fullWidth sx={{ mb: 2 }}>
                     <InputLabel id="disciplina-label">Disciplina</InputLabel>
                     <Select
                         labelId="disciplina-label"
@@ -39,7 +39,7 @@ export default function StudentModal({ open, handleClose }:IStudentModalProps){
                         <MenuItem>Process mapping</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl fullWidth>
+                <FormControl fullWidth sx={{ mb: 2 }}>
                     <InputLabel id="competencia-label">Competência</InputLabel>
                     <Select
                         labelId="competencia-label"
@@ -51,7 +51,7 @@ export default function StudentModal({ open, handleClose }:IStudentModalProps){
                         <MenuItem>Integração com banco</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl fullWidth>
+                <FormControl fullWidth sx={{ mb: 2 }}>
                     <InputLabel id="aptidao-label">Aptidão</InputLabel>
                     <Select
                         labelId="aptidao-label"
@@ -63,7 +63,9 @@ export default function StudentModal({ open, handleClose }:IStudentModalProps){
                         <MenuItem>Inapto</MenuItem>
                     </Select>
                 </FormControl>
-                <Button variant="outlined" color="secondary">Salvar avaliação</Button>
+                <Box sx={{ textAlign: 'right' }}>
+                    <Button variant="outlined" color="secondary">Salvar avaliação</Button>
+                </Box>
             </Box>
         </Modal>
     )    
