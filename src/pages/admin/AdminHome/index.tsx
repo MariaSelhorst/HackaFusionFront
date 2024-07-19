@@ -7,7 +7,7 @@ import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function getRandomColor(): string {
-    const colors = ['#ff8064', '#c594f8', '#8dd0e9', '#ffeea1','#7fcf7f' ]; 
+    const colors = ['#f3a98a', '#c594f8', '#8dd0e9', '#ffeea1','#7fcf7f', '#dd83bc' ,'##5475db' ]; 
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
@@ -52,7 +52,7 @@ export default function AdminHome() {
                             display="flex"
                             alignItems="center"
                             p={2}
-                            sx={{ border: `2px solid ${getRandomColor()}`}}
+                            sx={{borderRadius: '20px', border: `2px solid ${getRandomColor()}`}}
                         >
                             @VitoriaZago -
                             Quando um trigger AFTER DELETE é definido na tabela Produtos e um registro é excluído da tabela Produtos, o trigger captura o ProdutoID, a data e o usuário que realizou a exclusão.
@@ -66,7 +66,7 @@ export default function AdminHome() {
                             display="flex"
                             alignItems="center"
                             p={2}
-                            sx={{ border:`2px solid ${getRandomColor()}`}}>
+                            sx={{ borderRadius: '20px', border:`2px solid ${getRandomColor()}`}}>
                             @DonathanRam - Um trigger de exclusão em SQL Server é um mecanismo que executa automaticamente um conjunto de ações quando um registro é removido de uma tabela.  Isso é útil para manter um registro das operações.
                         </Box>
                     </AccordionDetails>
@@ -87,7 +87,7 @@ export default function AdminHome() {
                             display="flex"
                             alignItems="center"
                             p={2}
-                            sx={{ border:`2px solid ${getRandomColor()}` }}
+                            sx={{borderRadius: '20px', border:`2px solid ${getRandomColor()}` }}
                         >
                             @VitoriaZago -
                             1- Verifique e ajuste as permissões de acesso.
