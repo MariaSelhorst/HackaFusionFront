@@ -1,4 +1,4 @@
-import { RouteObject } from "react-router-dom"
+import { Navigate, RouteObject } from "react-router-dom"
 import Login from "../pages/shared/Login"
 import PreRegister from "../pages/shared/PreRegister"
 import Register from "../pages/shared/Register"
@@ -9,7 +9,7 @@ const openRoutes:RouteObject[] = [
         element: <Login/>
     },
     {
-        path: "/",
+        path: "/login",
         element: <Login/>
     },
     {

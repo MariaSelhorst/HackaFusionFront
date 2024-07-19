@@ -1,5 +1,5 @@
 import Home from "../pages/shared/Home";
-import ListClasses from "../pages/instructor/ListClasses";
+import ListClasses from "../pages/management/ListClasses";
 import CalendarManagement from "../pages/management/CalendarManagement";
 import ClassManagement from "../pages/management/ClassManagement";
 import { RouteObject } from "react-router-dom";

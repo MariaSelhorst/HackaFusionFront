@@ -13,7 +13,6 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { useNavigate } from 'react-router-dom';
 
 type SideparPropTypes = {
     children: any,
@@ -44,7 +43,7 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                     />
                     <NavItem
                         name='Calendário'
-                        destination={"/classes"}
+                        destination={"/calendar"}
                         icon={<CalendarMonthOutlinedIcon fontSize='large'/>}
                         open={open}
                     />
@@ -61,7 +60,7 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                         user?.role == 'ADMIN' &&
                         <NavItem
                             name='Instrutores'
-                            destination={"/classes"}
+                            destination={"/instructors"}
                             icon={<SchoolOutlinedIcon fontSize='large'/>}
                             open={open}
                         />

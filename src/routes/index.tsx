@@ -14,7 +14,7 @@ const Routes = () => {
 
     useEffect(() => {
         if(user) {
-            switch(user?.role) {
+            switch(user.role) {
                 case 'ADMIN':
                     setRoutes([...openRoutes, ...adminRoutes])
                     break;
@@ -28,6 +28,8 @@ const Routes = () => {
                     setRoutes(openRoutes)
                     break;
             }
+        } else {
+            setRoutes(openRoutes)
         }
     }, [user])
 

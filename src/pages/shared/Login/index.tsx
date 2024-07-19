@@ -14,21 +14,22 @@ import { UserContext } from '../../../providers/UserContext';
 import API from '../../../service/API';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
 
   const { register, handleSubmit } = useForm()
-  const { setUser, setToken } = useContext(UserContext)
+  const { user, setUser, setToken } = useContext(UserContext)
   const navigate = useNavigate()
+  let location = useLocation()
 
   const onSubmit = async (data:any) => {
     try {
       const response = await API.post("/login", data)
       setToken(response.data.token)
       setUser(response.data.user)
-      navigate("/home")
+      navigate(location.pathname == "/login" ? "/home" : location.pathname)
     } catch (e) {
       if(e instanceof AxiosError)
         toast.error(e.response!.data.message || "Something went wrong.")

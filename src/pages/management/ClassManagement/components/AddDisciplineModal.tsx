@@ -1,44 +1,72 @@
-import { Box, Button, Container, Divider, FormControl, Grid, InputLabel, MenuItem, Modal, Select, SelectChangeEvent, Stack, Typography } from "@mui/material";
-import { useState } from "react";
-import { CustomBox } from "./styles";
-import CheckBoxList, { IDisciplineInfo } from "./CheckBoxList";
+import { Box, Button, Divider, MenuItem, Modal, Paper, Select, Stack, Typography } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { IDiscipline } from "../../../../interface/discipline";
+import API from "../../../../service/API";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../../../providers/UserContext";
+import { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
-
-type ModalPropTypes = {
-    disciplines: IDisciplineInfo[]
+interface IAddDisciplineModalProps {
+    handleClose: () => void;
+    open: boolean;
 }
 
-export default function AddDisciplineModal({disciplines}:ModalPropTypes) {
-    const [open, setOpen] = useState(false);
-    const [disciplineId, setDiscipline] = useState("");
+export default function AddDisciplineModal({ open, handleClose }:IAddDisciplineModalProps) {
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const handleChange = (event: SelectChangeEvent) => {
-        setDiscipline(event.target.value);
+    const { id } = useParams()
+    const { token } = useContext(UserContext)
+    const [disciplineId, setDisciplineId] = useState("");
+    const [disciplines, setDisciplines] = useState<IDiscipline[]>([])
+
+    const handleSubmit = async () => {
+        try {
+            await API.post(
+                "/studentDiscipline",
+                { gangId: id, disciplineId: disciplineId },
+                { headers: { 'Authorization': "Bearer " + token } }
+            )
+            toast.success("Disciplina adicionada!")
+            setDisciplineId("")
+        } catch (e) {
+            if(e instanceof AxiosError)
+                toast.error(e.response!.data.message || "Something went wrong.")
+        }
     }
 
+    useEffect(() => {
+        const getDisciplines = async () => {
+            try {
+                const response = await API.get("discipline/notgang/" + id, { headers: { 'Authorization': "Bearer " + token } })
+                setDisciplines(response.data)
+            } catch (e) {
+                if(e instanceof AxiosError)
+                    toast.error(e.response!.data.message || "Something went wrong.")
+            }
+        }
+        getDisciplines()
+    }, [disciplineId])
+
     return (
-        <div>
-            <Button color="inherit" onClick={handleOpen}>
-                <span className="material-symbols-outlined" style={{fontSize: "60px", opacity: "50%"}}>add_circle</span>
-            </Button>
+        <>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-title">
-                <CustomBox>
-                    <Typography id="modal-title" variant="h4" noWrap>Adicionar disciplina</Typography>
-                    <Divider sx={{marginTop: 2, marginBottom: 2}}/>
-                    <Stack sx={{ maxHeight: "95%", paddingBottom: 5}} justifyContent={"space-between"}>
-                        <CheckBoxList disciplines={disciplines}/>
-                        <Divider sx={{marginTop: 3}}/>
-                        <Stack alignItems={"flex-end"} marginTop={5}>
-                            <Button variant="outlined" color="secondary" sx={{marginLeft: "auto"}}>
-                                Adicionar
-                            </Button>
-                        </Stack>
-                    </Stack>
-                </CustomBox>
+                <Box component={Paper} sx={{ maxWidth: "500px", margin: "20vh auto", p: 3, display: "flex", flexDirection: "column", gap: 3 }}>
+                    <Box>
+                        <Typography id="modal-title" variant="h4" noWrap>Adicionar disciplina</Typography>
+                        <Divider sx={{marginTop: 2, marginBottom: 2}}/>
+                    </Box>
+                    <Select
+                        sx={{ width: "100%" }}
+                        value={disciplineId}
+                        onChange={(e) => setDisciplineId(e.target.value)}
+                    >
+                        {
+                            disciplines.map(discipline => <MenuItem value={discipline.id}>{discipline.name}</MenuItem>)
+                        }
+                    </Select>
+                    <Button onClick={handleSubmit} variant="contained" sx={{ alignSelf: "end" }}>Adicionar</Button>
+                </Box>
             </Modal>
-            
-        </div>
+        </>
     )
 }

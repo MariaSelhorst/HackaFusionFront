@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouteObject } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 import Home from "../pages/shared/Home";
 import StudentCalendar from "../pages/student/StudentCalendar";
 
