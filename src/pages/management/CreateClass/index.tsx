@@ -35,7 +35,7 @@ export default function CreateClass() {
                             label="Nome da turma"
                             fullWidth
                             value={name}
-                            onChange={(e) => setName(e.target.name)}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <Select
                                 labelId="type-select-label"
