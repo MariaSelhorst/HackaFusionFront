@@ -29,7 +29,7 @@ export default function CreateDiscipline() {
 
     return (
         <>
-            <Sidebar name="Cadastrar Disciplina">
+            <Sidebar pageName="Cadastrar Disciplina">
                 <Stack maxWidth={"75%"} flexDirection={"column"} borderRadius={"20px"} bgcolor={"#ffffff"} gap={"20px"} sx={{ padding: "30px" }}>
                     <Box width={350}>
                         <Typography variant="h4" marginBottom={"15px"}>Cadastrar Disciplina</Typography>

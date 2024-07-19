@@ -1,168 +1,85 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { AppBar, Drawer, DrawerHeader } from './styles';
-import { Link } from 'react-router-dom';
+import { Drawer, DrawerHeader } from './styles';
+import { useContext, useState } from 'react';
+import CustomAppBar from './components/CustomAppBar';
+import NavItem from './components/NavItem';
+import { UserContext } from '../../providers/UserContext';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 type SideparPropTypes = {
     children: any,
-    name: string
+    pageName: string
 }
 
-export default function Sidebar({ children, name }: SideparPropTypes) {
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+export default function Sidebar({ children, pageName }: SideparPropTypes) {
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
+    const [open, setOpen] = useState(false);
+    const { user, setUser, setToken } = useContext(UserContext)
 
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+    const handleDrawerToggle = () => setOpen(prev => !prev)
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar position="fixed" open={open}>
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{
-                            marginRight: 5,
-                            ...(open && { display: 'none' }),
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        {name}
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <CustomAppBar handleDrawerToggle={handleDrawerToggle} pageName={pageName} open={open}/>
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                    </IconButton>
+                    <IconButton onClick={handleDrawerToggle}><ChevronLeftIcon/></IconButton>
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <Link to="/admin">
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>home</span>
-                                </ListItemIcon>
-                                <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </Link>
-                    </ListItem>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <Link to="/instructor/classes">
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>school</span>
-                                </ListItemIcon>
-                                <ListItemText primary="Turma" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </Link>
-                    </ListItem>
+                    <NavItem
+                        name='Home'
+                        destination={"/home"}
+                        icon={<HomeOutlinedIcon fontSize='large'/>}
+                        open={open}
+                    />
+                    <NavItem
+                        name='Calendário'
+                        destination={"/calendar"}
+                        icon={<CalendarMonthOutlinedIcon fontSize='large'/>}
+                        open={open}
+                    />
+                    {
+                        user?.role != 'STUDENT' &&
+                        <NavItem
+                            name='Turmas'
+                            destination={"/classes"}
+                            icon={<GroupsOutlinedIcon fontSize='large'/>}
+                            open={open}
+                        />
+                    }
+                    {
+                        user?.role == 'ADMIN' &&
+                        <NavItem
+                            name='Instrutores'
+                            destination={"/instructors"}
+                            icon={<SchoolOutlinedIcon fontSize='large'/>}
+                            open={open}
+                        />
+                    }
 
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <Link to="">
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>manage_accounts
-                                    </span>
-                                </ListItemIcon>
-                                <ListItemText primary="Conta" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </Link>
-                    </ListItem>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <Link to="">
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>calendar_today</span>
-                                </ListItemIcon>
-                                <ListItemText primary="Calendário" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </Link>
-                    </ListItem>
-
+                    <NavItem
+                        name='Sair'
+                        destination={"/login"}
+                        icon={<LogoutOutlinedIcon fontSize='large'/>}
+                        open={open}
+                        onClick={() => { 
+                            setUser(undefined)
+                            setToken(undefined)
+                        }}
+                    />
                 </List>
-
-
             </Drawer>
-
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                <DrawerHeader />
+                <DrawerHeader/>
                 {children}
             </Box>
         </Box>

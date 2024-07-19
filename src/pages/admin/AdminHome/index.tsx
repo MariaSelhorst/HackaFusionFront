@@ -1,9 +1,6 @@
-import { Container, Grid, Stack } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Grid, Stack, Typography } from "@mui/material";
 import Sidebar from "../../../components/Sidebar";
 import CardLink from "../../../components/CardLink";
-import CalendarTodayTwoToneIcon from '@mui/icons-material/CalendarTodayTwoTone';
-import CreateTwoToneIcon from '@mui/icons-material/CreateTwoTone';
-import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function getRandomColor(): string {
@@ -15,7 +12,7 @@ function getRandomColor(): string {
 export default function AdminHome() {
 
     return (
-        <Sidebar name="Home">
+        <Sidebar pageName="Home">
             <Stack alignItems="center" justifyContent="center">
                 <Container>
                     <Grid container spacing={2}>
