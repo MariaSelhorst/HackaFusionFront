@@ -4,6 +4,7 @@ import CalendarManagement from "../pages/management/CalendarManagement";
 import ClassManagement from "../pages/management/ClassManagement";
 import { RouteObject } from "react-router-dom";
 import CreateClass from "../pages/management/CreateClass";
+import StudentDetail from "../pages/instructor/StudentDetail";
 
 const instructorRoutes:RouteObject[] = [
     {
@@ -30,6 +31,10 @@ const instructorRoutes:RouteObject[] = [
         path: "/classes/:id",
         element: <ClassManagement/>
     },
+    {
+        path: "/classes/student/:id",
+        element: <StudentDetail/>
+    }
 ]
 
 export default instructorRoutes

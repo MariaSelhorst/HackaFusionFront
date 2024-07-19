@@ -3,7 +3,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Sidebar from "../../../components/Sidebar";
-import { Grid } from "@mui/material";
+import { Box, FormControl, Grid, InputLabel, MenuItem, Modal, Select } from "@mui/material";
 
 import StudentGraphic from "./components/StudentGraphic";
 import StudentModal from "./components/StudentModal";
@@ -26,25 +26,6 @@ export default function StudentDetail() {
     const handleClose = () => setOpen(false);
 
     return (
-<<<<<<< HEAD
-        <Sidebar name="Detalhamento do aluno">
-            <Typography variant='h4'>Nome do aluno</Typography>
-            <Typography variant='h6' marginBottom={3}>Turma</Typography>
-            <Button onClick={handleOpen} variant="outlined" >Avaliar aluno</Button>
-            <StudentModal open={open} handleClose={handleClose} />
-            <Typography variant='h5' marginTop={3}>Desempenho do Aluno</Typography>
-            
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-                    <StudentGraphic data={data} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-                    <StudentSkills />
-                </Grid>
-
-            </Grid>
-
-=======
         <Sidebar pageName="Detalhamento do aluno">
             <div>
                 <Typography variant='h4'>Nome do aluno</Typography>
@@ -56,15 +37,15 @@ export default function StudentDetail() {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style}>
+                    <Box sx={{}}>
                         <FormControl fullWidth>
                             <InputLabel id="disciplina-label">Disciplina</InputLabel>
                             <Select
                                 labelId="disciplina-label"
                                 id="disciplina-select"
-                                value={age}
+                                value={2}
                                 label="Disciplina"
-                                onChange={handleChange}
+                                onChange={() => {}}
                             >
                                 <MenuItem>Desenvolvimento web</MenuItem>
                                 <MenuItem>Redes</MenuItem>
@@ -76,9 +57,9 @@ export default function StudentDetail() {
                             <Select
                                 labelId="competencia-label"
                                 id="competencia-select"
-                                value={age}
+                                value={2}
                                 label="Competência"
-                                onChange={handleChange}
+                                onChange={() => {}}
                             >
                                 <MenuItem>Condicionais</MenuItem>
                                 <MenuItem>Funções</MenuItem>
@@ -90,9 +71,9 @@ export default function StudentDetail() {
                             <Select
                                 labelId="aptidao-label"
                                 id="aptidao-select"
-                                value={age}
+                                value={2}
                                 label="Aptidão"
-                                onChange={handleChange}
+                                onChange={() => {}}
                             >
                                 <MenuItem>Apto</MenuItem>
                                 <MenuItem>Desenvolvimento</MenuItem>
@@ -100,10 +81,10 @@ export default function StudentDetail() {
                             </Select>
                         </FormControl>
                         <Button variant="outlined" color="secondary">Salvar avaliação</Button>
+                        <StudentGraphic data={[]}></StudentGraphic>
                     </Box>
                 </Modal>
->>>>>>> integration
-
+            </div>
         </Sidebar>
     );
 }
