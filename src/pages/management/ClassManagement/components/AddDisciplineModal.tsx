@@ -61,7 +61,7 @@ export default function AddDisciplineModal({ open, handleClose }:IAddDisciplineM
                         onChange={(e) => setDisciplineId(e.target.value)}
                     >
                         {
-                            disciplines.map(discipline => <MenuItem value={discipline.id}>{discipline.name}</MenuItem>)
+                            disciplines.map((discipline, i) => <MenuItem key={i} value={discipline.id}>{discipline.name}</MenuItem>)
                         }
                     </Select>
                     <Button onClick={handleSubmit} variant="contained" sx={{ alignSelf: "end" }}>Adicionar</Button>
