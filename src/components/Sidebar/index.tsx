@@ -13,6 +13,7 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { Container } from '@mui/material';
 
 type SideparPropTypes = {
     children: any,
@@ -27,7 +28,7 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
     const handleDrawerToggle = () => setOpen(prev => !prev)
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', maxWidth: "100vw" }}>
             <CustomAppBar handleDrawerToggle={handleDrawerToggle} pageName={pageName} open={open}/>
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
@@ -78,9 +79,9 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                     />
                 </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" width="100%" marginTop="30px">
                 <DrawerHeader/>
-                {children}
+                { children }
             </Box>
         </Box>
     );

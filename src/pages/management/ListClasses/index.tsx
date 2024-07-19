@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
+import { Box, Container, FormControl, IconButton, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
 import Sidebar from "../../../components/Sidebar";
 import { useContext, useEffect, useState } from "react";
 import { IStudentGang } from "../../../interface/studentGang";
@@ -9,6 +9,7 @@ import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 
 export default function ListClasses() {
@@ -44,34 +45,39 @@ export default function ListClasses() {
 
     return (
         <Sidebar pageName="Class list">
-            <Stack flexDirection={"row"} justifyContent={"space-between"}>
-                <Typography variant="h3">Lista de Turmas</Typography>
-                <Box minWidth={100} width={150}>
-                    <FormControl fullWidth>
-                        <InputLabel id="type-select-label" sx={{ backgroundColor: "white" }}>Type</InputLabel>
-                        <Select 
-                            labelId="type-select-label"
-                            value={filter}
-                            onChange={(e) => { setFilter(e.target.value as string) }}
-                        >
-                            <MenuItem value="">Todas</MenuItem>
-                            <MenuItem value="TI">T.I.</MenuItem>
-                            <MenuItem value="MECHATRONIC">Mecatrônica</MenuItem>
-                            <MenuItem value="ADMINISTRATIVE">Administração</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-            </Stack>
-            <Stack alignItems={"center"} marginTop={"60px"} minHeight="50vh">
-                <DataGrid
-                    columns={columns}
-                    rows={gangs}
-                    rowSelection={false}
-                    hideFooter
-                    disableColumnFilter
-                    sx={{ width: "100%", maxWidth: "1000px" }}
-                />
-            </Stack>
+            <Container maxWidth="lg">
+                <Stack flexDirection={"row"} justifyContent={"space-between"} flexWrap="wrap">
+                    <Stack flexDirection="row" gap={3} alignItems="center">
+                        <Typography variant="h4">Lista de Turmas</Typography>
+                        <Link to="create"><IconButton><AddCircleOutlineOutlinedIcon/></IconButton></Link>
+                    </Stack>
+                    <Box width={150}>
+                        <FormControl fullWidth>
+                            <InputLabel id="type-select-label" sx={{ backgroundColor: "white" }}>Type</InputLabel>
+                            <Select 
+                                labelId="type-select-label"
+                                value={filter}
+                                onChange={(e) => { setFilter(e.target.value as string) }}
+                            >
+                                <MenuItem value="">Todas</MenuItem>
+                                <MenuItem value="TI">T.I.</MenuItem>
+                                <MenuItem value="MECHATRONIC">Mecatrônica</MenuItem>
+                                <MenuItem value="ADMINISTRATIVE">Administração</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                </Stack>
+                <Stack alignItems={"center"} marginTop={"60px"} minHeight="50vh">
+                    <DataGrid
+                        columns={columns}
+                        rows={gangs}
+                        rowSelection={false}
+                        hideFooter
+                        disableColumnFilter
+                        sx={{ width: "100%", maxWidth: "1000px" }}
+                    />
+                </Stack>
+            </Container>
         </Sidebar>
     )
 }
