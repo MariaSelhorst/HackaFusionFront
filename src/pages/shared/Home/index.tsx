@@ -5,6 +5,7 @@ import { useContext } from "react"
 import { UserContext } from "../../../providers/UserContext"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+
 function getRandomColor(): string {
     const colors = ['#f3a98a', '#c594f8', '#8dd0e9', '#ffeea1', '#7fcf7f', '#dd83bc', '##5475db'];
     const randomIndex = Math.floor(Math.random() * colors.length);
@@ -13,11 +14,11 @@ function getRandomColor(): string {
 
 const Home = () => {
 
-    const { user } = useContext(UserContext)
+    // const { user } = useContext(UserContext)
 
     return (
         <Sidebar pageName="Home">
-            <Stack alignItems="center" justifyContent="center">
+            {/* <Stack alignItems="center" justifyContent="center">
                 <Grid container spacing={2}>
 
                     {
@@ -28,7 +29,7 @@ const Home = () => {
                     }
 
                 </Grid>
-            </Stack>
+            </Stack> */}
             <Box>
                 <Typography variant="h5"
                     textAlign="center"
@@ -36,8 +37,8 @@ const Home = () => {
                     Fórum perguntas e respostas
                 </Typography>
             </Box>
-            <Box margin={3}>
-                <Accordion>
+            <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" marginTop={3}>
+                <Accordion sx={{ width: '100%', maxWidth: 1000, borderRadius: '20px', marginBottom: 2}}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1-content"
@@ -72,7 +73,7 @@ const Home = () => {
                     </AccordionDetails>
                 </Accordion>
 
-                <Accordion>
+                <Accordion sx={{ width: '100%', maxWidth: 1000, borderRadius: '20px', marginBottom: 2}}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1-content"
