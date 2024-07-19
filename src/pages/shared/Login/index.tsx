@@ -14,7 +14,7 @@ import { UserContext } from '../../../providers/UserContext';
 import API from '../../../service/API';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
@@ -82,15 +82,17 @@ export default function Login() {
                 autoComplete="current-password"
                 { ...register("password") }
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color='secondary'
-                sx={{ mt: 3, mb: 1 }}
-              >
-                Registrar-se
-              </Button>
+              <Link to="/preregister">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color='secondary'
+                  sx={{ mt: 3, mb: 1 }}
+                >
+                  Registrar-se
+                </Button>
+              </Link>
               <Button
                 type="submit"
                 fullWidth
