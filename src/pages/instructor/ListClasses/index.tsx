@@ -1,8 +1,6 @@
 import { Box, Container, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
 import Sidebar from "../../../components/Sidebar";
-import InfoList, { TableInfo } from "../../../components/InfoList";
 import { useState } from "react";
-import { GridColDef } from "@mui/x-data-grid";
 import ClassDataGrid from "./components/ClassDataGrid";
 
 
