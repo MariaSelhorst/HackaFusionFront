@@ -1,17 +1,15 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
+import { Box, Container, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material";
 import Sidebar from "../../../components/Sidebar";
-import InfoList, { TableInfo } from "../../../components/InfoList";
 import { useState } from "react";
+import ClassDataGrid from "./components/ClassDataGrid";
 
-const data:TableInfo[]  = [
-    {data1: "TDS1", data2: "2000"},
-    {data1: "TDS2", data2: "2020"},
-    {data1: "TDS3", data2: "2040"}
-]
 
 export default function ListClasses() {
-
     const [filter, setFilter] = useState("")
+
+    const deleteHandler = (value: number) => {
+        alert(value);
+    }
 
     return (
         <Sidebar name="Class list">
@@ -34,8 +32,10 @@ export default function ListClasses() {
                 </Box>
             </Stack>
             
-            <Stack alignItems={"center"} paddingTop={"60px"}>
-                <InfoList firstColumn="Curso" secondColumn="Ano" data={data} width={"65%"}/>
+            <Stack alignItems={"center"} marginTop={"60px"}>
+                <Container>
+                    <ClassDataGrid deleteOnClick={deleteHandler}/>
+                </Container>
             </Stack>
         </Sidebar>
     )

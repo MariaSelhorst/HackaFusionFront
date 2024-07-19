@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography, Modal, FormControl, InputLabel, Select, MenuItem, Button, Accordion, AccordionSummary, AccordionDetails, } from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
 import Sidebar from "../../../components/Sidebar";
 import CardLink from "../../../components/CardLink";
 import CalendarTodayTwoToneIcon from '@mui/icons-material/CalendarTodayTwoTone';
@@ -17,17 +17,19 @@ export default function AdminHome() {
     return (
         <Sidebar name="Home">
             <Stack alignItems="center" justifyContent="center">
-                <Grid container spacing={3} sx={{ maxWidth: 1600 }} justifyContent="center" paddingTop={3}>
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-                        <CardLink link="create-class" title="Criar Turma" icon={<CreateTwoToneIcon sx={{ fontSize: '2.2em', color: 'white' }} />} />
+                <Container>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                            <CardLink link="create-class" title="Criar Turma"/>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                            <CardLink link="/calendar" title="Calendário"/>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                            <CardLink link="instructors" title="Instrutores"/>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-                        <CardLink link="/calendar" title="Calendário" icon={<CalendarTodayTwoToneIcon sx={{ fontSize: '2.2em', color: 'white' }} />} />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-                        <CardLink link="instructors" title="Instrutores" icon={<PeopleAltTwoToneIcon sx={{ fontSize: '2.2em', color: 'white' }} />} />
-                    </Grid>
-                </Grid>
+                </Container>
             </Stack>
             <Box>
                 <Typography variant="h5"

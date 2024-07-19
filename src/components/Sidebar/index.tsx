@@ -15,6 +15,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { AppBar, Drawer, DrawerHeader } from './styles';
+import { Link } from 'react-router-dom';
 
 type SideparPropTypes = {
     children: any,
@@ -64,96 +65,100 @@ export default function Sidebar({ children, name }: SideparPropTypes) {
                 <Divider />
                 <List>
                     <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => {}}
-                        >
-                            <ListItemIcon
+                        <Link to="/admin">
+                            <ListItemButton
                                 sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>home</span>
-                            </ListItemIcon>
-                            <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
+                                <ListItemIcon
+                                    sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>home</span>
+                                </ListItemIcon>
+                                <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </Link>
                     </ListItem>
                     <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => {}}
-                        >
-                            <ListItemIcon
+                        <Link to="/instructor/classes">
+                            <ListItemButton
                                 sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>school</span>
-                            </ListItemIcon>
-                            <ListItemText primary="Turma" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
+                                <ListItemIcon
+                                    sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>school</span>
+                                </ListItemIcon>
+                                <ListItemText primary="Turma" sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </Link>
                     </ListItem>
-                    
+
 
                     <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => {}}
-                        >
-                            <ListItemIcon
+                        <Link to="">
+                            <ListItemButton
                                 sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>manage_accounts
-                                </span>
-                            </ListItemIcon>
-                            <ListItemText primary="Conta" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
+                                <ListItemIcon
+                                    sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>manage_accounts
+                                    </span>
+                                </ListItemIcon>
+                                <ListItemText primary="Conta" sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </Link>
                     </ListItem>
                     <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => {}}
-                        >
-                            <ListItemIcon
+                        <Link to="">
+                            <ListItemButton
                                 sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{fontSize: "1.8em"}}>calendar_today</span>
-                            </ListItemIcon>
-                            <ListItemText primary="Calendário" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
+                                <ListItemIcon
+                                    sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <span className="material-symbols-outlined" style={{ fontSize: "1.8em" }}>calendar_today</span>
+                                </ListItemIcon>
+                                <ListItemText primary="Calendário" sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </Link>
                     </ListItem>
 
                 </List>
 
-                
+
             </Drawer>
 
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
