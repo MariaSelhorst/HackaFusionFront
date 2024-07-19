@@ -3,11 +3,11 @@ import { Add as AddIcon } from '@mui/icons-material';
 import Sidebar from "../../../components/Sidebar";
 
 
-export default function ListCourses() {
+export default function ListDisciplines() {
 
     return (
         <>
-            <Sidebar name="Disciplinas">
+            <Sidebar pageName="Disciplinas">
                 <Stack>
                     <Stack flexDirection="row" gap={2}>
                         <Typography variant='h4'>Disciplinas</Typography>

@@ -1,5 +1,4 @@
-export const StudentDashboard = () => {
-
+const StudentDashboard = () => {
 
     return(
         <>

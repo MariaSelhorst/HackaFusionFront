@@ -43,7 +43,7 @@ export default function StudentDetail() {
     };
 
     return (
-        <Sidebar name="Detalhamento do aluno">
+        <Sidebar pageName="Detalhamento do aluno">
             <div>
                 <Typography variant='h4'>Nome do aluno</Typography>
                 <Typography variant='h6'>Turma</Typography>

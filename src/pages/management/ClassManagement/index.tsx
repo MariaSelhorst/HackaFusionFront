@@ -11,27 +11,6 @@ const disciplineList = [
     {id: 3, name: "aaaa"},
     {id: 4, name: "aaaa"},
     {id: 5, name: "aaaa"},
-    {id: 6, name: "aaaa"},
-    {id: 7, name: "aaaa"},
-    {id: 8, name: "aaaa"},
-    {id: 9, name: "aaaa"},
-    {id: 10, name: "aaaa"},
-    {id: 11, name: "aaaa"},
-    {id: 12, name: "aaaa"},
-    {id: 13, name: "aaaa"},
-    {id: 14, name: "aaaa"},
-    {id: 15, name: "aaaa"},
-    {id: 16, name: "aaaa"},
-    {id: 17, name: "aaaa"},
-    {id: 18, name: "aaaa"},
-    {id: 19, name: "aaaa"},
-    {id: 20, name: "aaaa"},
-    {id: 21, name: "aaaa"},
-    {id: 22, name: "aaaa"},
-    {id: 23, name: "aaaa"},
-    {id: 24, name: "aaaa"},
-    {id: 25, name: "aaaa"},
-    {id: 26, name: "aaaa"},
 ]
 
 export default function ClassManagement() {
@@ -39,7 +18,7 @@ export default function ClassManagement() {
 
     return (
         <>
-            <Sidebar name="Nome da turma">
+            <Sidebar pageName="Nome da turma">
                 <Container maxWidth="lg">
                     <Grid container spacing={20}>
                         <Grid item xs={12} sm={12} md={12} lg={6} xl={6} >

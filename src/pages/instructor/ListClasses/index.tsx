@@ -14,7 +14,7 @@ export default function ListClasses() {
     const [filter, setFilter] = useState("")
 
     return (
-        <Sidebar name="Class list">
+        <Sidebar pageName="Class list">
             <Stack flexDirection={"row"} justifyContent={"space-between"}>
                 <Typography variant="h3">Lista de Turmas</Typography>
                 <Box minWidth={100} width={150}>
