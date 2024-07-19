@@ -1,8 +1,18 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { AxiosError } from "axios";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import API from "../../../../service/API";
+import { UserContext } from "../../../../providers/UserContext";
+
+interface IInstructorFormModalProps { 
+    open: boolean; 
+    handleClose: () => void
+}
 
 const style = {
     margin: "20vh auto",
-    width: 400,
+    maxWidth: 400,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -11,21 +21,51 @@ const style = {
     gap: 3
 };
 
-export default function InstructorFormModal({ open, handleClose }: { open: boolean; handleClose: () => void }) {
+export default function InstructorFormModal({ open, handleClose }:IInstructorFormModalProps) {
+
+    const [email, setEmail] = useState("")
+    const { token } = useContext(UserContext)
+
+    const submit = async () => {
+        try {
+            await API.post(
+                "/register/pre",
+                { email: email, role: 1 }, 
+                { headers: { 'Authorization': "Bearer " + token } }
+            )
+            toast.success("Pré-registro efetuado")
+            setEmail("")
+        } catch (e) {
+            if(e instanceof AxiosError)
+                toast.error(e.response!.data.message || "Something went wrong.")
+        }
+    }
+
     return (
         <Modal
             open={open}
             onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography variant="h6" component="h2">
                     Cadastrar Instrutor
                 </Typography>
-                <TextField id="outlined-basic" label="E-mail" variant="outlined" />
-                <Button variant="contained" color="error" onClick={handleClose} sx={{ alignSelf: "end" }}>Salvar</Button>
+                <TextField
+                    label="E-mail"
+                    variant="outlined"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => {
+                        submit()
+                        handleClose()
+                    }}
+                    sx={{ alignSelf: "end" }}
+                >Salvar Pré-registro</Button>
             </Box>
         </Modal>
-    );
+    )
 }
