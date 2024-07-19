@@ -9,6 +9,10 @@ const openRoutes:RouteObject[] = [
         element: <Login/>
     },
     {
+        path: "/",
+        element: <Login/>
+    },
+    {
         path: "/login",
         element: <Login/>
     },

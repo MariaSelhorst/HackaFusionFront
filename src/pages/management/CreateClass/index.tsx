@@ -5,7 +5,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import API from "../../../service/API";
+import { AxiosError } from "axios";
+import { toast } from "react-toastify";
+import { UserContext } from "../../../providers/UserContext";
 
 
 export default function CreateClass() {
@@ -14,12 +18,25 @@ export default function CreateClass() {
     const [name, setName] = useState("")
     const [type, setType] = useState("TI")
     const [currentEmail, setCurrentEmail] = useState("")
+    const { token } = useContext(UserContext)
 
     const submit = async () => {
         try {
-            
+            const response = await API.post(
+                "/gang",
+                { name: name, mainDisciplineType: type },
+                { headers: { 'Authorization': "Bearer " + token } }
+            )
+            students.forEach(async (student) => {
+                await API.post(
+                    "/register/pre",
+                    { email: student, role: 2, studentGangId: response.data.id },
+                    { headers: { 'Authorization': "Bearer " + token } }
+                )
+            })
         } catch (e) {
-            
+            if(e instanceof AxiosError)
+                toast.error(e.response!.data.message || "Something went wrong.")
         }
     }
 
@@ -77,8 +94,8 @@ export default function CreateClass() {
                             <Table>
                                 <TableBody>
                                     {
-                                        students.map(student => 
-                                            <TableRow>
+                                        students.map((student, index) => 
+                                            <TableRow key={index}>
                                                 <TableCell>{student}</TableCell>
                                                 <TableCell>
                                                     <IconButton
@@ -92,7 +109,7 @@ export default function CreateClass() {
                             </Table>
                         </TableContainer>
                     </Box>
-                    <Button variant="contained" fullWidth>Cadastrar</Button>
+                    <Button variant="contained" fullWidth onClick={submit}>Cadastrar</Button>
                 </Stack>
             </Sidebar>
         </>
