@@ -1,16 +1,13 @@
 import { useEffect } from "react";
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import Sidebar from "../../../components/Sidebar";
-import { Stack, InputLabel, MenuItem, Container } from "@mui/material";
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Grid } from "@mui/material";
 
 import StudentGraphic from "./components/StudentGraphic";
 import StudentModal from "./components/StudentModal";
+import StudentSkills from "./components/StudentSkills";
 
 const data = [
     { name: 'Python', Aluno: 73, Turma: 90 },
@@ -31,12 +28,22 @@ export default function StudentDetail() {
     return (
         <Sidebar name="Detalhamento do aluno">
             <Typography variant='h4'>Nome do aluno</Typography>
-            <Typography variant='h6'>Turma</Typography>
+            <Typography variant='h6' marginBottom={3}>Turma</Typography>
             <Button onClick={handleOpen} variant="outlined" >Avaliar aluno</Button>
-            <StudentModal open={open} handleClose={handleClose}/>
-            <Typography variant='h5'>Desempenho do Aluno</Typography>
-            <StudentGraphic data={data}/>
+            <StudentModal open={open} handleClose={handleClose} />
+            <Typography variant='h5' marginTop={3}>Desempenho do Aluno</Typography>
             
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+                    <StudentGraphic data={data} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+                    <StudentSkills />
+                </Grid>
+
+            </Grid>
+
+
         </Sidebar>
     );
 }
