@@ -83,6 +83,11 @@ export default function Login() {
                 id="password"
                 autoComplete="current-password"
                 { ...register("password") }
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSubmit(onSubmit)();
+                  }
+                }}
               />
               <Link to="/preregister">
                 <Button
