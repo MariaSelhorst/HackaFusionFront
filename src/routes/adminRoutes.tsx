@@ -34,6 +34,10 @@ const adminRoutes:RouteObject[] = [
     {
         path: "/instructors",
         element: <ListInstructor/>
+    },
+    {
+        path: "/calendar",
+        element: <CalendarManagement/>
     }
 ]
 
