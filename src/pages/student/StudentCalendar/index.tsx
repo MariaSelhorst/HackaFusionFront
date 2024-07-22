@@ -1,13 +1,26 @@
-import { Typography } from "@mui/material"
+import { IconButton, Stack, Typography } from "@mui/material"
+import Sidebar from "../../../components/Sidebar"
 
-function StudentCalendar() {
+export default function StudentCalendar() {
 
-
-    return(
+    return (
         <>
-            <Typography>Calendario de estudante</Typography>
+            <Sidebar pageName="Calendário">
+                <Stack>
+                    <Stack flexDirection="row" gap={2}>
+                        <Typography variant='h4'>Calendário</Typography>
+                    </Stack>
+
+                    {/* <DataGrid
+
+                    >
+
+                    </DataGrid> */}
+
+                </Stack>
+            </Sidebar>
         </>
+
     )
 }
 
-export default StudentCalendar
