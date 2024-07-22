@@ -27,6 +27,8 @@ export default function Login() {
   const onSubmit = async (data:any) => {
     try {
       const response = await API.post("/login", data)
+      sessionStorage.setItem("@TOKEN", response.data.token)
+      sessionStorage.setItem("@USERID", response.data.user.id)
       setToken(response.data.token)
       setUser(response.data.user)
       navigate(location.pathname == "/login" ? "/home" : location.pathname)
@@ -81,6 +83,11 @@ export default function Login() {
                 id="password"
                 autoComplete="current-password"
                 { ...register("password") }
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSubmit(onSubmit)();
+                  }
+                }}
               />
               <Link to="/preregister">
                 <Button

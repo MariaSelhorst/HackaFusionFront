@@ -18,6 +18,8 @@ export default function CreateClass() {
     const [name, setName] = useState("")
     const [type, setType] = useState("TI")
     const [currentEmail, setCurrentEmail] = useState("")
+
+    
     const { token } = useContext(UserContext)
     
 

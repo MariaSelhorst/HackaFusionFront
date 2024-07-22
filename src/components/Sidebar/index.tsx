@@ -35,17 +35,24 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <Box>
+                    <NavItem
+                        name='Home'
+                        destination={"/home"}
+                        icon={<HomeOutlinedIcon fontSize='large'/>}
+                        open={open}
+                    />
+                    <NavItem
+                        name='Calendário'
+                        destination={"/calendar"}
+                        icon={<CalendarMonthOutlinedIcon fontSize='large'/>}
+                        open={open}
+                    />
+                    {
+                        user?.role == 'STUDENT' &&
                         <NavItem
-                            name='Home'
-                            destination={"/home"}
-                            icon={<HomeOutlinedIcon fontSize='large' />}
-                            open={open}
-                        />
-                        <NavItem
-                            name='Calendário'
-                            destination={"/calendar"}
-                            icon={<CalendarMonthOutlinedIcon fontSize='large' />}
+                            name='Dashboard'
+                            destination='/dashboard'
+                            icon={<BarChartOutlinedIcon fontSize='large'/>}
                             open={open}
                         />
                         {

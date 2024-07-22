@@ -1,12 +1,12 @@
-import * as React from 'react';
 import { Typography, Card, CardContent, IconButton, Grid } from "@mui/material";
 import Sidebar from "../../../components/Sidebar";
 import AddRatingModal from "./components/AddRatingModal";
 import EditIcon from '@mui/icons-material/Edit';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { useState } from "react";
 
 export default function InstructorRating() {
-    const [skills, setSkills] = React.useState<{ name: string; rating: number }[]>([]);
+    const [skills, setSkills] = useState<{ name: string; rating: number }[]>([]);
 
     const handleDeleteSkill = (index: number) => {
         const newSkills = [...skills];

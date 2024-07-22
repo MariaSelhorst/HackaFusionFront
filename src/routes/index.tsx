@@ -16,13 +16,13 @@ const Routes = () => {
         if(user) {
             switch(user.role) {
                 case 'ADMIN':
-                    setRoutes([...openRoutes, ...adminRoutes])
+                    setRoutes([...adminRoutes, ...openRoutes])
                     break;
                 case 'INSTRUCTOR':
-                    setRoutes([...openRoutes, ...instructorRoutes])
+                    setRoutes([...instructorRoutes, ...openRoutes])
                     break;
                 case 'STUDENT':
-                    setRoutes([...openRoutes, ...studentRoutes])
+                    setRoutes([...studentRoutes, ...openRoutes])
                     break;
                 default:
                     setRoutes(openRoutes)

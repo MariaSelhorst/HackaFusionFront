@@ -1,4 +1,3 @@
-import { Margin, Style } from "@mui/icons-material"
 import { Box, Button, FormControl, InputLabel, MenuItem, Modal, Select } from "@mui/material"
 
 interface IStudentModalProps {
