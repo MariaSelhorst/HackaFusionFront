@@ -13,6 +13,7 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 
 type SideparPropTypes = {
     children: any,
@@ -35,6 +36,7 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                 </DrawerHeader>
                 <Divider />
                 <List>
+                    <Box>
                     <NavItem
                         name='Home'
                         destination={"/home"}
@@ -55,6 +57,7 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                             icon={<BarChartOutlinedIcon fontSize='large'/>}
                             open={open}
                         />
+                        }
                         {
                             user?.role != 'STUDENT' &&
                             <NavItem
@@ -93,6 +96,6 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                 <DrawerHeader />
                 {children}
             </Box>
-        </Box>
+        </Box >
     );
 }
