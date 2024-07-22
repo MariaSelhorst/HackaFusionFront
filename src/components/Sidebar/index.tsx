@@ -13,7 +13,6 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { Container } from '@mui/material';
 
 type SideparPropTypes = {
     children: any,
@@ -37,7 +36,6 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                 <Divider />
                 <List>
                     <Box>
-
                         <NavItem
                             name='Home'
                             destination={"/home"}

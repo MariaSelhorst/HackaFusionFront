@@ -1,26 +1,18 @@
-import { IconButton, Stack, Typography } from "@mui/material"
+import { Container, Typography } from "@mui/material"
 import Sidebar from "../../../components/Sidebar"
+import { useContext } from "react"
+import { UserContext } from "../../../providers/UserContext"
 
 export default function StudentCalendar() {
 
-    return (
-        <>
-            <Sidebar pageName="Calendário">
-                <Stack>
-                    <Stack flexDirection="row" gap={2}>
-                        <Typography variant='h4'>Calendário</Typography>
-                    </Stack>
+    const { user } = useContext(UserContext)
 
-                    {/* <DataGrid
+    return(
+        <Sidebar pageName="Calendário">
+            <Container>
 
-                    >
-
-                    </DataGrid> */}
-
-                </Stack>
-            </Sidebar>
-        </>
-
+            </Container>
+        </Sidebar>
     )
 }
 
