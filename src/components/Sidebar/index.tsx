@@ -29,59 +29,64 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
 
     return (
         <Box sx={{ display: 'flex', maxWidth: "100vw" }}>
-            <CustomAppBar handleDrawerToggle={handleDrawerToggle} pageName={pageName} open={open}/>
+            <CustomAppBar handleDrawerToggle={handleDrawerToggle} pageName={pageName} open={open} />
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
-                    <IconButton onClick={handleDrawerToggle}><ChevronLeftIcon/></IconButton>
+                    <IconButton onClick={handleDrawerToggle}><ChevronLeftIcon /></IconButton>
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <NavItem
-                        name='Home'
-                        destination={"/home"}
-                        icon={<HomeOutlinedIcon fontSize='large'/>}
-                        open={open}
-                    />
-                    <NavItem
-                        name='Calendário'
-                        destination={"/calendar"}
-                        icon={<CalendarMonthOutlinedIcon fontSize='large'/>}
-                        open={open}
-                    />
-                    {
-                        user?.role != 'STUDENT' &&
-                        <NavItem
-                            name='Turmas'
-                            destination={"/classes"}
-                            icon={<GroupsOutlinedIcon fontSize='large'/>}
-                            open={open}
-                        />
-                    }
-                    {
-                        user?.role == 'ADMIN' &&
-                        <NavItem
-                            name='Instrutores'
-                            destination={"/instructors"}
-                            icon={<SchoolOutlinedIcon fontSize='large'/>}
-                            open={open}
-                        />
-                    }
+                    <Box>
 
-                    <NavItem
-                        name='Sair'
-                        destination={"/login"}
-                        icon={<LogoutOutlinedIcon fontSize='large'/>}
-                        open={open}
-                        onClick={() => { 
-                            setUser(undefined)
-                            setToken(undefined)
-                        }}
-                    />
+                        <NavItem
+                            name='Home'
+                            destination={"/home"}
+                            icon={<HomeOutlinedIcon fontSize='large' />}
+                            open={open}
+                        />
+                        <NavItem
+                            name='Calendário'
+                            destination={"/calendar"}
+                            icon={<CalendarMonthOutlinedIcon fontSize='large' />}
+                            open={open}
+                        />
+                        {
+                            user?.role != 'STUDENT' &&
+                            <NavItem
+                                name='Turmas'
+                                destination={"/classes"}
+                                icon={<GroupsOutlinedIcon fontSize='large' />}
+                                open={open}
+                            />
+                        }
+                        {
+                            user?.role == 'ADMIN' &&
+                            <NavItem
+                                name='Instrutores'
+                                destination={"/instructors"}
+                                icon={<SchoolOutlinedIcon fontSize='large' />}
+                                open={open}
+                            />
+                        }
+                    </Box>
+                    <Box sx={{marginTop: 75}}>
+                        <NavItem
+                            name='Sair'
+                            destination={"/login"}
+                            icon={<LogoutOutlinedIcon fontSize='large' />}
+                            open={open}
+                            onClick={() => {
+                                setUser(undefined)
+                                setToken(undefined)
+                            }}
+                        />
+                    </Box>
                 </List>
+
             </Drawer>
             <Box component="main" width="100%" marginTop="30px">
-                <DrawerHeader/>
-                { children }
+                <DrawerHeader />
+                {children}
             </Box>
         </Box>
     );
