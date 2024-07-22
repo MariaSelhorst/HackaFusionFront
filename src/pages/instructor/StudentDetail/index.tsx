@@ -5,7 +5,6 @@ import { Container, Grid } from "@mui/material";
 
 import StudentGraphic from "./components/StudentGraphic";
 import StudentModal from "./components/StudentModal";
-import StudentSkills from "./components/StudentSkills";
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -42,7 +41,7 @@ export default function StudentDetail() {
                         <StudentGraphic data={data} />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-                        <StudentSkills />
+
                     </Grid>
                 </Grid>
             </Container>

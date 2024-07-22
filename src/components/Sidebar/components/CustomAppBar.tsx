@@ -9,8 +9,6 @@ interface ICustomAppBarProps {
 }
 
 const CustomAppBar = ({ handleDrawerToggle, pageName, open }:ICustomAppBarProps) => {
-
-
     return(
         <AppBar position="fixed" open={open}>
             <Toolbar>

@@ -14,11 +14,7 @@ const CalendarManagement = () => {
                         variant='h4'>Calendário</Typography>
                     </Stack>
 
-                    {/* <DataGrid
-
-                    >
-
-                    </DataGrid> */}
+                    
 
                 </Stack>
             </Sidebar>
