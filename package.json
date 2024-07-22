@@ -25,6 +25,7 @@
     "react-router-dom": "^6.25.0",
     "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
+    "rsuite": "^5.67.0",
     "styled-components": "^6.1.12"
   },
   "devDependencies": {

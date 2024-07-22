@@ -9,7 +9,7 @@ export default function StudentGraphic({ data }:IStudentGraphicProps) {
     
     
     return(
-        <Box sx={{ marginTop: 4, overflowX: "auto", overflowY: "hidden", width: "80vw" }}>
+        <Box sx={{ marginTop: 4, overflowX: "auto", overflowY: "hidden", width: "80vw", maxWidth: "100%" }}>
             <ResponsiveContainer width={700} height={300} >
                 <BarChart
                     data={data}

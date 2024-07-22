@@ -52,7 +52,7 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                         user?.role == 'STUDENT' &&
                         <NavItem
                             name='Dashboard'
-                            destination='/dashboard'
+                            destination={'/dashboard/'+user.id}
                             icon={<BarChartOutlinedIcon fontSize='large'/>}
                             open={open}
                         />

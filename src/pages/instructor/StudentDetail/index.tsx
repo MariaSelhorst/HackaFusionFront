@@ -1,12 +1,13 @@
-import * as React from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Sidebar from "../../../components/Sidebar";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 import StudentGraphic from "./components/StudentGraphic";
 import StudentModal from "./components/StudentModal";
 import StudentSkills from "./components/StudentSkills";
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const data = [
     { name: 'Python', Aluno: 73, Turma: 90 },
@@ -19,27 +20,32 @@ const data = [
 
 
 export default function StudentDetail() {
-    const [open, setOpen] = React.useState(false);
+
+    const { id } = useParams()
+    const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <Sidebar pageName="Detalhamento do aluno">
-            <Typography variant='h4'>Nome do aluno</Typography>
-            <Typography variant='h6' marginBottom={3}>Turma</Typography>
-            <Button onClick={handleOpen} variant="outlined" >Avaliar aluno</Button>
             <StudentModal open={open} handleClose={handleClose} />
-            <Typography variant='h5' marginTop={3}>Desempenho do Aluno</Typography>
-            
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-                    <StudentGraphic data={data} />
+            <Container maxWidth="xl">
+                <Typography variant='h4'>Nome do aluno</Typography>
+                <Typography variant='h6' marginBottom={3}>Turma</Typography>
+                <Button onClick={handleOpen} variant="outlined" >Avaliar aluno</Button>
+                
+                <Typography variant='h5' marginTop={3}>Desempenho do Aluno</Typography>
+                
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+                        <StudentGraphic data={data} />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+                        <StudentSkills />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-                    <StudentSkills />
-                </Grid>
-            </Grid>
+            </Container>
         </Sidebar>
     );
 }

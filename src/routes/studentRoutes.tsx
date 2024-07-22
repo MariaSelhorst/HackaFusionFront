@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import Home from "../pages/shared/Home";
 import StudentCalendar from "../pages/student/StudentCalendar";
-import StudentDashboard from "../pages/student/StudentDashboard";
+import StudentDetail from "../pages/instructor/StudentDetail";
 
 const studentRoutes:RouteObject[] = [
     {
@@ -13,9 +13,13 @@ const studentRoutes:RouteObject[] = [
         element: <Home/>
     },
     {
-        path: "/dashboard",
-        element: <StudentDashboard/>
-    }
+        path: "*",
+        element: <Home/>
+    },
+    {
+        path: "/dashboard/:id",
+        element: <StudentDetail/>
+    },
 ]
 
 export default studentRoutes

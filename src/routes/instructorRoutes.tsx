@@ -15,6 +15,10 @@ const instructorRoutes:RouteObject[] = [
         element: <Home/>
     },
     {
+        path: "*",
+        element: <Home/>
+    },
+    {
         path: "/classes",
         element: <ListClasses/>
     },
