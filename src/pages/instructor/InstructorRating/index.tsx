@@ -21,7 +21,7 @@ export default function InstructorRating() {
     };
 
     return (
-        <Sidebar name="Habilidades">
+        <Sidebar pageName="Habilidades">
             <Typography variant="h3">Habilidades</Typography>
             <AddRatingModal skills={skills} setSkills={setSkills} />
             <Grid container spacing={2}>

@@ -1,11 +1,27 @@
-import { Typography } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
+import Sidebar from "../../../components/Sidebar"
 
 const CalendarManagement = () => {
 
 
     return(
         <>
-            <Typography>Calendario dos mano brabo</Typography>
+            <Sidebar pageName="Calendário">
+                <Stack>
+                    <Stack flexDirection="row" gap={2}>
+                        <Typography 
+                        margin={2}
+                        variant='h4'>Calendário</Typography>
+                    </Stack>
+
+                    {/* <DataGrid
+
+                    >
+
+                    </DataGrid> */}
+
+                </Stack>
+            </Sidebar>
         </>
     )
 }
