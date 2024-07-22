@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 
 export default function ListClasses() {
@@ -18,11 +19,26 @@ export default function ListClasses() {
     const [gangs, setGangs] = useState<IStudentGang[]>([])
     const { token } = useContext(UserContext)
 
+    const handleDelete = async (id: number) => {
+        try{
+            console.log(token)
+            await API.delete("/gang/" + id, { headers: { 'Authorization': "Bearer " + token }});
+            const updatedGangs = gangs.filter(gang => gang.id !== id);
+            toast.success("Deleted class")
+            setGangs(updatedGangs);
+
+        } catch (e){
+            if(e instanceof AxiosError)
+                toast.error(e.response!.data.message || "Something went wrong.")
+        }
+    }
+
     const columns:GridColDef[] = [
         { field: "id", headerName: "ID", flex: 0.1, sortable: false },
         { field: "name", headerName: "Nome", flex: 0.4, sortable: false },
         { field: "mainDisciplineType", headerName: "Tipo da Turma", flex: 0.4, sortable: false },
-        { field: "Detalhes", renderCell: (params) => <Link to={params.row.id.toString()}><ArrowForwardIosOutlinedIcon/></Link> }
+        { field: "Deletar",renderCell: (params) => (<IconButton onClick={() => handleDelete(params.row.id)}><DeleteOutlineIcon/></IconButton>)},
+        { field: "Detalhes", align: 'center',renderCell: (params) => <Link to={params.row.id.toString()}><ArrowForwardIosOutlinedIcon/></Link> }
     ]
 
 

@@ -19,6 +19,7 @@ export default function CreateClass() {
     const [type, setType] = useState("TI")
     const [currentEmail, setCurrentEmail] = useState("")
     const { token } = useContext(UserContext)
+    
 
     const submit = async () => {
         try {
@@ -27,13 +28,16 @@ export default function CreateClass() {
                 { name: name, mainDisciplineType: type },
                 { headers: { 'Authorization': "Bearer " + token } }
             )
+            toast.success("Class created.")
             students.forEach(async (student) => {
                 await API.post(
                     "/register/pre",
                     { email: student, role: 2, studentGangId: response.data.id },
                     { headers: { 'Authorization': "Bearer " + token } }
                 )
+                
             })
+            
         } catch (e) {
             if(e instanceof AxiosError)
                 toast.error(e.response!.data.message || "Something went wrong.")
