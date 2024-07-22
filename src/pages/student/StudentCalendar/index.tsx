@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material"
 import Sidebar from "../../../components/Sidebar"
 
-function StudentCalendar() {
+export default function StudentCalendar() {
 
 
     return(
@@ -11,4 +11,3 @@ function StudentCalendar() {
     )
 }
 
-export default StudentCalendar
