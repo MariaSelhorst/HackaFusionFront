@@ -13,12 +13,20 @@ interface IQuestionBoxProps {
     question: IQuestion;
 }
 
+
+
 const QuestionBox = ({ question }:IQuestionBoxProps) => {
 
     const [answers, setAnswers] = useState<IAnswer[]>([])
     const { token, user } = useContext(UserContext)
     const [newAnswer, setNewAnswer] = useState("")
     const [render, setRender] = useState(false)
+
+    const getAbreviation = (fullname: string): string => {
+        let nameArr = fullname.toUpperCase().split(' ');
+    
+        return `${nameArr[0][0]}${nameArr[nameArr.length - 1][1]}`
+    }
 
     useEffect(() => {
         const getAnswers = async () => {
@@ -53,7 +61,7 @@ const QuestionBox = ({ question }:IQuestionBoxProps) => {
             <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                 <Avatar
                     sx={{ backgroundColor: stringToColor(question.user.fullname), width: "60px", height: "60px" }}
-                    children={`${question.user.fullname.split(' ')[0][0]}${question.user.fullname.split(' ')[1][0]}`.toUpperCase()}
+                    children={getAbreviation(question.user.fullname)}
                 />
                 <Typography variant="h5">{question.title}</Typography>
             </Box>
@@ -66,7 +74,7 @@ const QuestionBox = ({ question }:IQuestionBoxProps) => {
                         <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'center', marginLeft: 5 }}>
                             <Avatar
                                 sx={{ backgroundColor: stringToColor(answer.user.fullname) }}
-                                children={`${answer.user.fullname.split(' ')[0][0]}${answer.user.fullname.split(' ')[1][0]}`.toUpperCase()}
+                                children={getAbreviation(answer.user.fullname)}
                             />
                             <Typography variant="body1">{answer.description}</Typography>
                         </Box>
@@ -84,7 +92,7 @@ const QuestionBox = ({ question }:IQuestionBoxProps) => {
             >
                 <Avatar
                     sx={{ backgroundColor: stringToColor(user!.fullname) }}
-                    children={`${user!.fullname.split(' ')[0][0]}${user!.fullname.split(' ')[1][0]}`.toUpperCase()}
+                    children={getAbreviation(user!.fullname)}
                 />
                 <TextField
                     label="Resposta"

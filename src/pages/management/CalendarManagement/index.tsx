@@ -11,6 +11,7 @@ import API from "../../../service/API"
 import EventsDetailed from "./components/EventsDetailed"
 import CreateEventModal from "./components/CreateEventModal"
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import dayjs from "dayjs"
 
 const CalendarManagement = () => {
 
@@ -30,7 +31,7 @@ const CalendarManagement = () => {
                     `/calendar/year/${date.getFullYear()}/month/${date.getMonth() + 1}`,
                     { headers: { 'Authorization': token } }
                 )
-                setEvents(response.data)
+                setEvents(response.data.map((x:any) => ({...x, date: dayjs(x.date).add(1, 'day').format("YYYY-MM-DD")})))
 
             } catch (e) {
                 if(e instanceof AxiosError)
@@ -39,6 +40,7 @@ const CalendarManagement = () => {
         }
         getEvents()
     }, [date, modalOpen, render])
+
 
     return(
         <Sidebar pageName="Calendário">

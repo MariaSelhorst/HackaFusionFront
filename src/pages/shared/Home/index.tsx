@@ -19,6 +19,12 @@ const Home = () => {
 
     const reRender = () => setRender(prev => !prev)
 
+    const getAbreviation = (fullname: string): string => {
+        let nameArr = fullname.toUpperCase().split(' ');
+
+        return `${nameArr[0][0]}${nameArr[nameArr.length - 1][1]}`
+    }
+
     const submitNewQuestion:SubmitHandler<FieldValues> = async (data) => {
         try {
             await API.post("/question", { ...data, userId: user?.id }, { headers: { 'Authorization': "Bearer " + token } })
@@ -67,7 +73,7 @@ const Home = () => {
                         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                             <Avatar 
                                 sx={{ backgroundColor: stringToColor(user!.fullname), width: "60px", height: "60px" }}
-                                children={`${user!.fullname.split(' ')[0][0]}${user!.fullname.split(' ')[1][0]}`.toUpperCase()}
+                                children={getAbreviation(user!.fullname)}
                             />
                             <TextField
                                 fullWidth
