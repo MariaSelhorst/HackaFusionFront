@@ -1,4 +1,5 @@
 import { Box, Container, IconButton, Stack, Typography } from "@mui/material"
+import { Box, Container, IconButton, Stack, Typography } from "@mui/material"
 import Sidebar from "../../../components/Sidebar"
 import { Calendar } from "rsuite"
 import { dateToString } from "../../../utils/date"
@@ -43,6 +44,36 @@ const CalendarManagement = () => {
 
 
     return(
+        <Sidebar pageName="Calendário">
+
+            <Container sx={{ minHeight: "60vh", display: 'flex', flexDirection: 'column', gap: 5, paddingBottom: 5 }}>
+                <CreateEventModal open={modalOpen} onClose={handleCloseModal} />
+
+                <Calendar 
+                    value={date}
+                    onMonthChange={(date) => { setDate(date) }}
+                    onChange={(date) => { setCurrentEvents(events.filter(event => event.date == dateToString(date))) }}
+                    bordered
+                    renderCell={(date) => 
+                        <Stack>
+                            {
+                                events
+                                .filter(event => event.date == dateToString(date))
+                                .map(current => <Typography fontWeight={500}>{current.title}</Typography>)
+                            }
+                        </Stack>
+                    }
+                />
+                <Box sx={{ display: "flex", gap: 3, alignItems: "center" }}>
+                    <Typography variant="h4">Adicionar Evento</Typography>
+                    <IconButton onClick={() => setModalOpen(true)}>
+                        <AddCircleOutlineOutlinedIcon fontSize="large"/>
+                    </IconButton>
+                </Box>
+
+                <EventsDetailed events={currentEvents} reRender={() => { setRender(prev => !prev) }}/>
+            </Container>
+        </Sidebar>
         <Sidebar pageName="Calendário">
 
             <Container sx={{ minHeight: "60vh", display: 'flex', flexDirection: 'column', gap: 5, paddingBottom: 5 }}>
