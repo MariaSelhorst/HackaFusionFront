@@ -43,7 +43,7 @@ export default function ListInstructor() {
     return (
         <>
             <Sidebar pageName="Instrutores">
-                <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", gap: 3, minHeight: "70vh" }}>
                     <Stack flexDirection="row" gap={2}>
                         <Typography variant='h4'>Instrutores</Typography>
                         <IconButton color="primary" onClick={handleOpen}><AddIcon fontSize="large"/></IconButton>

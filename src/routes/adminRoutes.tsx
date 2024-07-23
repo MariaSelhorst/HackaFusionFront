@@ -7,6 +7,7 @@ import ListInstructor from "../pages/admin/ListInstructor";
 import CreateClass from "../pages/management/CreateClass";
 import ListDisciplines from "../pages/admin/ListDisciplines";
 import CreateDiscipline from "../pages/admin/CreateDiscipline";
+import StudentDetail from "../pages/shared/StudentDetail";
 
 const adminRoutes:RouteObject[] = [
     {
@@ -48,7 +49,12 @@ const adminRoutes:RouteObject[] = [
     {
         path: "/disciplines/create",
         element: <CreateDiscipline/>
-    }
+    },
+    {
+        path: "/classes/:classId/student/:id",
+        element: <StudentDetail/>
+    },
+    
 ]
 
 export default adminRoutes

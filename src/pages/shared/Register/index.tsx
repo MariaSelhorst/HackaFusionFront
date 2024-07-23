@@ -66,7 +66,6 @@ export default function Register() {
               id="email"
               label="Email"
               autoComplete="email"
-              autoFocus
               {...register("email")}
             />
             <TextField
@@ -86,7 +85,6 @@ export default function Register() {
               id="username"
               label="Username"
               autoComplete="off"
-              autoFocus
               {...register("username")}
             />
             <TextField
@@ -96,7 +94,7 @@ export default function Register() {
               id="senha"
               label="Senha"
               autoComplete="off"
-              autoFocus
+              type="password"
               {...register("password")}
             />
             <TextField
@@ -106,7 +104,7 @@ export default function Register() {
               id="senha"
               label="Confirmar senha"
               autoComplete="senha"
-              autoFocus
+              type="password"
               value={confirmation}
               onChange={(e) => { setConfirmation(e.target.value) }}
             />

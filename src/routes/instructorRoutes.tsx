@@ -7,6 +7,7 @@ import CreateClass from "../pages/management/CreateClass";
 import ListDisciplines from "../pages/admin/ListDisciplines";
 import CreateDiscipline from "../pages/admin/CreateDiscipline";
 import StudentDetail from "../pages/shared/StudentDetail";
+import InstructorRating from "../pages/instructor/InstructorRating";
 
 const instructorRoutes:RouteObject[] = [
     {
@@ -48,6 +49,10 @@ const instructorRoutes:RouteObject[] = [
     {
         path: "/classes/:classId/student/:id",
         element: <StudentDetail/>
+    },
+    {
+        path: "/skills",
+        element: <InstructorRating/>
     },
 ]
 
