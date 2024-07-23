@@ -1,10 +1,12 @@
 import Home from "../pages/shared/Home";
 import CalendarManagement from "../pages/management/CalendarManagement";
 import ClassManagement from "../pages/management/ClassManagement";
-import { RouteObject } from "react-router-dom";
+import { Navigate, RouteObject } from "react-router-dom";
 import ListClasses from "../pages/management/ListClasses";
 import ListInstructor from "../pages/admin/ListInstructor";
 import CreateClass from "../pages/management/CreateClass";
+import ListDisciplines from "../pages/admin/ListDisciplines";
+import CreateDiscipline from "../pages/admin/CreateDiscipline";
 
 const adminRoutes:RouteObject[] = [
     {
@@ -17,7 +19,7 @@ const adminRoutes:RouteObject[] = [
     },
     {
         path: "*",
-        element: <Home/>
+        element: <Navigate to="/home"/>
     },
     {
         path: "/classes",
@@ -34,6 +36,18 @@ const adminRoutes:RouteObject[] = [
     {
         path: "/instructors",
         element: <ListInstructor/>
+    },
+    {
+        path: "/calendar",
+        element: <CalendarManagement/>
+    },
+    {
+        path: "/disciplines",
+        element: <ListDisciplines/>
+    },
+    {
+        path: "/disciplines/create",
+        element: <CreateDiscipline/>
     }
 ]
 
