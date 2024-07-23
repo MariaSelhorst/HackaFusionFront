@@ -6,7 +6,6 @@ import { Container, Grid } from "@mui/material";
 import StudentGraphic from "./components/StudentGraphic";
 import StudentModal from "./components/StudentModal";
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 const data = [
     { name: 'Python', Aluno: 73, Turma: 90 },
@@ -20,7 +19,6 @@ const data = [
 
 export default function StudentDetail() {
 
-    const { id } = useParams()
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);

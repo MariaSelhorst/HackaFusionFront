@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import StarIcon from '@mui/icons-material/Star';
 import { FormControl, Input, InputLabel, SelectChangeEvent, Typography } from '@mui/material';
 
 const style = {
