@@ -1,11 +1,12 @@
-import { Box, Container, Grid, IconButton, Typography } from "@mui/material"
+import { Box, Container, Grid, IconButton, Stack, Typography } from "@mui/material"
 import Sidebar from "../../../components/Sidebar"
-import { HeaderRectangle } from "./styles"
-import { useParams } from "react-router-dom"
+import { HeaderRectangle, StyledLink } from "./styles"
+import { Link, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react";
 import { IUser } from "../../../interface/user";
 import { IDiscipline } from "../../../interface/discipline";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import API from "../../../service/API";
@@ -23,10 +24,19 @@ export default function ClassManagement() {
     const [gang, setGang] = useState<IStudentGang>()
     const [modalOpen, setModalOpen] = useState(false)
 
+    const generateButton = (userId: number) => {
+        return (
+            <StyledLink to={`student/${userId}`}>
+                <ChevronRightIcon/>
+            </StyledLink>
+        )
+    }
+
     const studentColumns:GridColDef[] = [
         { field: "id", headerName: "ID", flex: 0.05, sortable: false, resizable: false },
         { field: "fullname", headerName: "Nome Completo", flex: 0.2, sortable: false, resizable: false },
         { field: "email", headerName: "Email", flex: 0.2, sortable: false, resizable: false },
+        { field: "link", headerName: "", flex: 0.2, sortable: false, resizable: false, display: "flex", renderCell: (params) => generateButton(params.row.id), align: "right"},
     ]
     const disciplineColumns:GridColDef[] = [
         { field: "id", headerName: "ID", flex: 0.05, sortable: false, resizable: false },

@@ -14,6 +14,7 @@ import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
+import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 
 type SideparPropTypes = {
     children: any,
@@ -59,12 +60,20 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                     }
                     {
                         user?.role != 'STUDENT' &&
-                        <NavItem
-                            name='Turmas'
-                            destination={"/classes"}
-                            icon={<GroupsOutlinedIcon fontSize='large'/>}
-                            open={open}
-                        />
+                        <>
+                            <NavItem
+                                name='Turmas'
+                                destination={"/classes"}
+                                icon={<GroupsOutlinedIcon fontSize='large'/>}
+                                open={open}
+                            />
+                            <NavItem
+                                name='Disciplinas'
+                                destination='/disciplines'
+                                icon={<BookOutlinedIcon fontSize='large'/>}
+                                open={open}
+                            />
+                        </>
                     }
                     {
                         user?.role == 'ADMIN' &&

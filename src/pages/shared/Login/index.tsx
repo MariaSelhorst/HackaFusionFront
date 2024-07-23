@@ -63,13 +63,13 @@ export default function Login() {
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}><LockOutlinedIcon/></Avatar>
             <Typography component="h1" variant="h5">Sign in</Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1, display: 'flex', flexDirection: 'column', width: '100%', gap: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Email"
+                label="Email or Username"
                 autoComplete="email"
                 autoFocus
                 { ...register("usernameOrEmail") }
@@ -89,17 +89,7 @@ export default function Login() {
                   }
                 }}
               />
-              <Link to="/preregister">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color='secondary'
-                  sx={{ mt: 3, mb: 1 }}
-                >
-                  Registrar-se
-                </Button>
-              </Link>
+              <Link to="/preregister" style={{ alignSelf: "center" }}>Registrar-se</Link>
               <Button
                 type="submit"
                 fullWidth
