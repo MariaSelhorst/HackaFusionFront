@@ -1,11 +1,11 @@
-import { Box, Container, Grid, IconButton, Stack, Typography } from "@mui/material"
+import { Box, Container, Grid, IconButton, Typography } from "@mui/material"
 import Sidebar from "../../../components/Sidebar"
 import { HeaderRectangle, StyledLink } from "./styles"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react";
 import { IUser } from "../../../interface/user";
 import { IDiscipline } from "../../../interface/discipline";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";

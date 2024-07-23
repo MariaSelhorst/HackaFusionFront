@@ -15,6 +15,7 @@ import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 
 type SideparPropTypes = {
     children: any,
@@ -81,6 +82,15 @@ export default function Sidebar({ children, pageName }: SideparPropTypes) {
                             name='Instrutores'
                             destination={"/instructors"}
                             icon={<SchoolOutlinedIcon fontSize='large'/>}
+                            open={open}
+                        />
+                    }
+                    {
+                        user?.role == 'INSTRUCTOR' &&
+                        <NavItem
+                            name='Habilidades'
+                            destination={"/skills"}
+                            icon={<StarBorderOutlinedIcon fontSize='large'/>}
                             open={open}
                         />
                     }

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
@@ -6,6 +5,12 @@ import StarIcon from '@mui/icons-material/Star';
 import AddIcon from '@mui/icons-material/Add';
 import { FormControl, IconButton, InputLabel, MenuItem, Rating, Select, SelectChangeEvent, Typography } from '@mui/material';
 import RatingModal from './RatingModal';
+import { useContext, useEffect, useState } from 'react';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+import API from '../../../../service/API';
+import { UserContext } from '../../../../providers/UserContext';
+import { ISkill } from '../../../../interface/skill';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -40,11 +45,13 @@ interface AddRatingModalProps {
 }
 
 export default function AddRatingModal({ skills, setSkills }: AddRatingModalProps) {
-    const [skill, setSkill] = React.useState('');
-    const [value, setValue] = React.useState<number | null>(2);
-    const [hover, setHover] = React.useState(-1);
-    const [open, setOpen] = React.useState(false);
-    const [skillList, setSkillList] = React.useState<string[]>([])
+
+    const { token } = useContext(UserContext)
+    const [skill, setSkill] = useState('');
+    const [value, setValue] = useState<number | null>(2);
+    const [hover, setHover] = useState(-1);
+    const [open, setOpen] = useState(false);
+    const [skillList, setSkillList] = useState<ISkill[]>([])
 
     const handleChange = (event: SelectChangeEvent) => {
         setSkill(event.target.value as string);
@@ -68,15 +75,25 @@ export default function AddRatingModal({ skills, setSkills }: AddRatingModalProp
         }
     };
 
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await API.get("/skill", { headers: { 'Authorization': "Bearer " + token } })
+                setSkillList(response.data)
+            } catch (e) {
+                if(e instanceof AxiosError)
+                    toast.error(e.response!.data.message || "Something went wrong.")
+            }
+        })()
+    }, [])
+
     return (
         <div>
-
             <IconButton 
                 color="primary"
                 onClick={handleOpen}
                 sx={{
                     marginRight:'1500px'
-                
                 }}
             >
                 <AddIcon fontSize="large" />
@@ -102,7 +119,7 @@ export default function AddRatingModal({ skills, setSkills }: AddRatingModalProp
                             onChange={handleChange}
                         >
                             {skillList.map((skill, index) => (
-                                <MenuItem key={index} value={skill}>{skill}</MenuItem>
+                                <MenuItem key={index} value={skill.id}>{skill.name}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
@@ -112,10 +129,10 @@ export default function AddRatingModal({ skills, setSkills }: AddRatingModalProp
                             value={value}
                             precision={0.5}
                             getLabelText={(value: number) => `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`}
-                            onChange={(event, newValue) => {
+                            onChange={(_, newValue) => {
                                 setValue(newValue);
                             }}
-                            onChangeActive={(event, newHover) => {
+                            onChangeActive={(_, newHover) => {
                                 setHover(newHover);
                             }}
                             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
@@ -127,7 +144,7 @@ export default function AddRatingModal({ skills, setSkills }: AddRatingModalProp
                         )}
                     </Box>
                     <Box sx={{ mt: 2 }}>
-                        <RatingModal onAddSkill={(newSkill) => setSkillList([...skillList, newSkill])} />
+                        <RatingModal/>
                     </Box>
                     <Button
                         variant='outlined'
